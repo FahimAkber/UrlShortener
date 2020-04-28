@@ -1,0 +1,39 @@
+@model IEnumerable<UShortener.Models.UrlData>
+@{
+    ViewData["Title"] = "Url Shortener";
+}
+
+<div id="container" >
+    <div id="left-body" style="width: 50%; float: left">
+
+        <h2>All URL</h4>
+
+        <table border="1" style="width: 50%;">
+            <tr>
+                <th>Serial No:</th>
+                <th>Original URL</th>
+                <th>Shortener URL</th>
+                <th>Created AT</th>
+            </tr>
+
+           @foreach (var url in Model)
+           {
+            <tr>
+                <td>@url.ID</td>
+                <td>@url.OriginalUrl</td>
+                <td>@url.ShortUrl</td>
+                <td>@url.CreatedAt</td>
+            </tr>
+           }
+
+        </table>
+    </div>
+    <div id="right-body" style="width: 50%; float: right">
+        <h2>Make a new Short URL</h4>
+        <form asp-controller="Url" asp-action="shortUrl" method="post">
+            <input type="text" name="url" placeholder="Enter Original Url">
+            <input type="submit" name="Short">
+        </form>
+       
+    </div>
+</div>
